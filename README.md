@@ -2,31 +2,74 @@
 
 ## Project Overview
 
-This project simulates fluid dynamics on a WS2812B LED strip using a Raspberry Pi Pico. The "water" reacts to the tilt of an MPU6050 sensor, featuring momentum, friction, and wall bounces.
+This project is a virtual fluid physics engine running on a Raspberry Pi Pico. Using an MPU6050 sensor and a ring with 60 LEDs, it simulates an interactive “digital water balance” that responds in real time to the laws of physics (inertia, momentum, friction).
 
 ## Features
 
-- **Dual-Core Architecture:** \* **Core 0:** Handles sensor I/O and physics calculations (Gravity, Velocity, Friction).
-  - **Core 1:** Handles LED rendering (Trail effects, Shimmer) and Serial visualization.
-- **Physics Engine:** Custom logic for fluid inertia and damping.
-- **Robustness:** Automatically falls back to a "Simulation Mode" (Sine wave) if the sensor is disconnected.
-- **Visual Effects:** \* _Shimmer:_ Water turns whiter/frothy as velocity increases.
-
-  - _Bounce Flash:_ Edges flash white upon high-impact collision.
-
-  **Feature: Auto-Calibration:** On startup, the system takes 100 samples to calculate the sensor's "Zero-G Offset". This ensures that the water stays perfectly still on a flat surface, regardless of manufacturing imperfections in the sensor.
+- **Realistic Physics:** Water does not stop instantly; it accelerates, decelerates, and flows according to gravity.
+- **Dual-Core Architecture:** Physics calculations (Core 0) and LED visualization (Core 1) run simultaneously on separate cores for maximum performance.
+- **Live Visuals:** The color of the water changes dynamically based on speed (Still Blue -> Moving Turquoise -> Foamy White).
+- **Full Reliability:** The system automatically calibrates itself during startup. This ensures that the water remains perfectly stable on a flat surface, regardless of manufacturing defects in the sensor. Furthermore, even if a sensor fails, it detects the situation and automatically switches to “Simulation Mode” to continue operating.
 
 ## Hardware Setup
 
-- **MCU:** Raspberry Pi Pico
-- **Sensor:** MPU6050 (SDA: GP4, SCL: GP5)
-- **Output:** WS2812B LED Strip (Data: GP28)
+The project uses a Raspberry Pi Pico as the main controller. Below is the pin mapping for the peripherals.
+
+![System](assets/hardwaresetup.png)
+
+**Power Note:** The WS2812B LEDs require 5V (VBUS). Do not power them from the 3V3 pin, as it may damage the voltage regulator on the Pico when using high brightness.
 
 ## How to Test
 
-1.  **With Hardware:** Connect the MPU6050 and LED strip. Tilt the sensor to move the light. Shake rapidly to see the color change (Shimmer).
-2.  **Without Sensor (Robustness):** Disconnect the MPU6050. The system will detect the fault and enter simulation mode, moving the light automatically.
-3.  **Serial Monitor:** Open at 115200 baud to view the ASCII visualization: `[   ~O~    ] Vel: 0.45`
+You can verify the system's functionality and robustness using the following scenarios:
+
+1. **Standard Operation & Calibration**
+
+- Step 1: Place the Ring and Sensor on a flat, stable surface.
+
+- Step 2: Power on the Pico via USB.
+
+- Observation (Calibration): You will see an Orange Cross (+) blinking on the LED ring for exactly 2 seconds. Do not move the sensor during this phase.
+
+- Observation (Ready): Once calibration is complete, the orange light turns off, and a Deep Blue point appears at the lowest gravity point.
+
+- Action: Tilt the sensor in any direction (360°). The light should flow smoothly towards the lowest point, simulating liquid physics.
+
+2. Visual Dynamics (The "Living Water" Effect)
+
+Action: Tilt the sensor gently vs. rapidly.
+
+Observation:
+
+- Still: The water in deep blue.
+- Moving: The color shifts to Turquoise.
+- Shaking: Shake the sensor vigorously. The water turns White, simulating foam/turbulence.
+
+3. Robustness Test (Fail-Safe Mode)
+
+Objective: To prove the system does not crash when hardware fails.
+
+- Step 1: Unplug the Pico.
+
+- Step 2: Disconnect the MPU6050 sensor completely (remove VCC/GND/SDA/SCL wires).
+
+- Step 3: Power on the Pico.
+
+- Observation: The system detects the sensor failure, skips calibration, and automatically enters "Demo Mode". The light will oscillate back and forth driven by a generated sine wave, proving the software is robust against hardware faults.
+
+4. Headless Testing (Serial Monitor)
+
+Even without the LED Ring, you can visualize the physics engine.
+
+-Setup: Connect Pico to PC and open Arduino Serial Monitor.
+
+    Settings: Baud Rate 115200.
+
+    Output: You will see a real-time ASCII representation of the ring:
+
+    Vel: 0.00 	[       O        ]  <-- Stationary
+    Vel: 1.50 	[         ~O~    ]  <-- Moving Right
+    Vel: 4.20 	[           =O=  ]  <-- High Speed
 
 ## Dependencies
 
