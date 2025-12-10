@@ -124,7 +124,7 @@ void loop()
 void setup1()
 {
   strip.begin();
-  strip.setBrightness(120); // Adjust brightness (0-255)
+  strip.setBrightness(30); // Adjust brightness (0-255)
   strip.show();
 }
 
