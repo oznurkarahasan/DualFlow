@@ -10,24 +10,24 @@ The files included in the project are briefly described below.
 
 - **motion-driven-light_Ring** **(MAIN PROJECT)**
 
-* Includes the latest firmware for the 60 LED Ring setup(2D Physics Engine). Run this file to test the project with the ring LED.
+Includes the latest firmware for the 60 LED Ring setup(2D Physics Engine). Run this file to test the project with the ring LED.
 
 - **motion-driven-light**
 
-* First prototype (Linear physics logic). Recorded for version history. 8-LED flat neopixel tested.
+First prototype (Linear physics logic). Recorded for version history. 8-LED flat neopixel tested.
+-> https://youtube.com/shorts/M1EpC66oDy8?si=H--r2uOWxxHVKi08
 
 - **mpu6050_pico_serial_test**
 
-* **Unit Test:** Used to verify I2C communication and raw data reading from the MPU6050 sensor before integration.
-  -> https://youtube.com/shorts/M1EpC66oDy8?si=H--r2uOWxxHVKi08
+**Unit Test:** Used to verify I2C communication and raw data reading from the MPU6050 sensor before integration.
 
 - **pico_ws2812_red_blink**
 
-* **Unit Test:** Used to verify power supply and signal integrity for the WS2812B LEDs on the Raspberry Pi Pico.
+**Unit Test:** Used to verify power supply and signal integrity for the WS2812B LEDs on the Raspberry Pi Pico.
 
 - **assets**
 
-* Contains documentation assets (Wiring diagrams, screenshots, etc.).
+Contains documentation assets (Wiring diagrams, screenshots, etc.).
 
 ---
 
