@@ -4,7 +4,7 @@
 
 // --- HARDWARE CONFIGURATION ---
 #define PIN_NEOPIXEL 28 // Data IN pin for WS2812B (GP28)
-#define NUM_PIXELS 8    // Number of LEDs in your strip/ring
+#define NUM_PIXELS 16    // Number of LEDs in your strip/ring
 #define SDA_PIN 4       // MPU6050 SDA (GP4)
 #define SCL_PIN 5       // MPU6050 SCL (GP5)
 

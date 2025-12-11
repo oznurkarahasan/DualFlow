@@ -17,6 +17,11 @@ Includes the latest firmware for the 60 LED Ring setup(2D Physics Engine). Run t
 First prototype (Linear physics logic). Recorded for version history. 8-LED flat neopixel tested.
 -> https://youtube.com/shorts/M1EpC66oDy8?si=H--r2uOWxxHVKi08
 
+- **motion-driven-light_SandSimulation**
+
+Features inverted gravity logic, dynamic "splash" color effects, and real-time ASCII visualization. Configured for a 16-LED strip with 8-unit sand simulation.
+-> https://youtube.com/shorts/JNmV4SZPx7w?feature=share
+
 - **mpu6050_pico_serial_test**
 
 **Unit Test:** Used to verify I2C communication and raw data reading from the MPU6050 sensor before integration.
@@ -75,6 +80,8 @@ You can verify the system's functionality and robustness using the following sce
 
 - Action: Tilt the sensor in any direction (360°). The light should flow smoothly towards the lowest point, simulating liquid physics.
 
+-> https://youtube.com/shorts/BEvXlMBlCcM?feature=share
+
 2. **Visual Dynamics (The "Living Water" Effect)**
 
 Action: Tilt the sensor gently vs. rapidly.
@@ -99,6 +106,8 @@ Objective: To prove the system does not crash when hardware fails.
 
 - Effect: A "Ghost Hand" algorithm takes over, generating complex wave patterns that simulate natural hand tremors and gravity shifts. The water continues to flow organically without any external input.
 
+-> https://youtube.com/shorts/-qZk3KJ6FNY?feature=share
+
 4. **Headless Testing (Serial Monitor)**
 
 Even without the LED Ring, you can visualize the physics engine.
@@ -112,6 +121,8 @@ Even without the LED Ring, you can visualize the physics engine.
         X: 120.5   Y: -45.2   Vel: 0.12    [      ~O~       ]  <-- Stationary
         X: -15.0   Y: 200.1   Vel: 1.50    [         ~O~    ]  <-- Moving Right
         X: 300.2   Y: 12.0    Vel: 4.20    [           =O=  ]  <-- High Speed
+
+-> https://youtube.com/shorts/jOefMrIFadw?feature=share
 
 ## Dependencies
 
