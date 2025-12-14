@@ -3,7 +3,7 @@
 #include <MPU6050.h>
 #include <math.h> 
 
-#define PIN_NEOPIXEL 28   // Data IN pin for WS2812B (GP28)
+#define PIN_NEOPIXEL 26  // Data IN pin for WS2812B (GP26)
 #define NUM_PIXELS 60     // Number of LEDs in the ring
 #define SDA_PIN 4         // MPU6050 SDA (GP4)
 #define SCL_PIN 5         // MPU6050 SCL (GP5)
@@ -143,7 +143,7 @@ void loop()
     filtered_ay = (FILTER_ALPHA * current_ay) + ((1.0 - FILTER_ALPHA) * filtered_ay);
     
     // 3. Calculate angle using FILTERED data
-    target_angle = atan2(-filtered_ax, -filtered_ay); 
+    target_angle = atan2(filtered_ax, filtered_ay); 
   }
   else
   {

@@ -19,7 +19,7 @@ First prototype (Linear physics logic). Recorded for version history. 8-LED flat
 
 - **motion-driven-light_SandSimulation**
 
-Features inverted gravity logic, dynamic "splash" color effects, and real-time ASCII visualization. Configured for a 16-LED strip with 8-unit sand simulation.
+Features inverted gravity logic, dynamic "splash" color effects, and real-time ASCII visualization. Configured for a 16-LED strip with 8-unit sand simulation
 -> https://youtube.com/shorts/JNmV4SZPx7w?feature=share
 
 - **mpu6050_pico_serial_test**
@@ -42,7 +42,7 @@ For the full experience described in this documentation, please use the code loc
 **`motion-driven-light_Ring/`**
 
 **Why this version?**
-Unlike the earlier prototypes, this version utilizes 2D Vector Math (atan2) to simulate a 360-degree liquid surface and implements Signal Processing to smooth out sensor noise.
+Unlike the earlier prototypes, this version utilizes 2D Vector Math to simulate a 360-degree liquid surface and implements Signal Processing to smooth out sensor noise.
 
 ## Features
 
@@ -64,6 +64,8 @@ The project uses a Raspberry Pi Pico as the main controller. Below is the pin ma
 
 **Power Note:** The WS2812B LEDs require 5V (VBUS). Do not power them from the 3V3 pin, as it may damage the voltage regulator on the Pico when using high brightness.
 
+![System](assets/schematic.png) ![System](assets/pcb.png)
+
 ## How to Test
 
 You can verify the system's functionality and robustness using the following scenarios:
@@ -80,7 +82,7 @@ You can verify the system's functionality and robustness using the following sce
 
 - Action: Tilt the sensor in any direction (360°). The light should flow smoothly towards the lowest point, simulating liquid physics.
 
--> https://youtube.com/shorts/BEvXlMBlCcM?feature=share
+-> https://youtube.com/shorts/5EYqlaO_wfM?feature=share
 
 2. **Visual Dynamics (The "Living Water" Effect)**
 
@@ -106,7 +108,7 @@ Objective: To prove the system does not crash when hardware fails.
 
 - Effect: A "Ghost Hand" algorithm takes over, generating complex wave patterns that simulate natural hand tremors and gravity shifts. The water continues to flow organically without any external input.
 
--> https://youtube.com/shorts/-qZk3KJ6FNY?feature=share
+-> https://youtube.com/shorts/DG2Ya7dyYuo?feature=share
 
 4. **Headless Testing (Serial Monitor)**
 
@@ -122,9 +124,12 @@ Even without the LED Ring, you can visualize the physics engine.
         X: -15.0   Y: 200.1   Vel: 1.50    [         ~O~    ]  <-- Moving Right
         X: 300.2   Y: 12.0    Vel: 4.20    [           =O=  ]  <-- High Speed
 
--> https://youtube.com/shorts/jOefMrIFadw?feature=share
+-> https://youtube.com/shorts/fzVaaSYen3E?feature=share
+-> https://youtu.be/OTydAIbvoZM
 
 ## Dependencies
 
 - Adafruit_NeoPixel
 - MPU6050 (Electronic Cats)
+
+![System](assets/1.jpeg) ![System](assets/2.jpeg)
